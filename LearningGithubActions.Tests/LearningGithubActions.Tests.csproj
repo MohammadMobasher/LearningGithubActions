@@ -22,4 +22,11 @@
     <ProjectReference Include="..\LearningGithubActions.Api\LearningGithubActions.Api.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<AssemblyAttribute Include="Xunit.AssemblyTrait">
+			<_Parameter1>Shard</_Parameter1>
+			<_Parameter2>1</_Parameter2>
+		</AssemblyAttribute>
+	</ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-name: first workflow
+name: test workflow
 
 on:
   push: 
@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        shards: ['1', '2']
+        shards: ['1']
     steps:
       - name: Fetch Repo
         uses: actions/checkout@v7
