@@ -30,10 +30,10 @@ jobs:
         with:
           name: test-results-${{ steps.generate-uuid.outputs.uuid }}
           path: artifacts/tests/output/**
-          
+
   publish-test-results:
     if: always()
-    needs: test
+    needs: test-action
     permissions: write-all
     runs-on: ubuntu-latest
 
