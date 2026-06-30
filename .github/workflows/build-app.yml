@@ -1,4 +1,4 @@
-name: build workflow
+name: Build & Publish
 
 on:
   push: 
@@ -16,4 +16,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+    
+      - name: Publish
+        run: dotnet publish ./LearningGithubActions.slnx -c Release -o publish
     
