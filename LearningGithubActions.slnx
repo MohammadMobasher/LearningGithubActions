@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="LearningGithubActions.Api/LearningGithubActions.Api.csproj" />
+  <Project Path="LearningGithubActions.Tests/LearningGithubActions.Tests.csproj" />
+</Solution>
