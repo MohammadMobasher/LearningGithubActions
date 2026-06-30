@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Fetch Repo
         uses: actions/checkout@v7
+        
       - name: Test
-        run: dotnet test  ./LearningGithubActions.Tests
+        run: dotnet test ./LearningGithubActions.slnx --filter Shard=${{ matrix.shards }}
     
