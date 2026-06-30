@@ -19,11 +19,16 @@ jobs:
       - name: Test
         run: dotnet test ./LearningGithubActions.slnx --filter Shard=${{ matrix.shards }}  -c Release -l trx --results-directory 'artifacts/tests/output'
 
+      - name: Set UUID
+        if: ${{ success() || failure() }}
+        id: generate-uuid
+        uses: filipstefansson/uuid-action@v1
+
       - name: Upload test artifacts
         uses: actions/upload-artifact@v4
         if: ${{ success() || failure() }}
         with:
-          name: test-results
+          name: test-results-${{ steps.generate-uuid.outputs.uuid }}
           path: artifacts/tests/output/**
   
     
