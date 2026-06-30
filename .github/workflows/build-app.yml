@@ -12,7 +12,7 @@ jobs:
       - name: Fetch Repo
         uses: actions/checkout@v7
       
-      -name Setup .NET
+      - name: Setup .NET
         uses: actions/step-dotnet@v4
         with:
           dotnet-version: '8.0.x'
