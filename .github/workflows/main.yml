@@ -11,4 +11,6 @@ jobs:
     steps:
       - name: Fetch Repo
         uses: actions/checkout@v7
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
     
