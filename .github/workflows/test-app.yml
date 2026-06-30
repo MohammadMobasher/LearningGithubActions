@@ -8,6 +8,7 @@ on:
 jobs:
   test-action:
     runs-on: ubuntu-latest
+    permissions: write-all
     strategy:
       fail-fast: false
       matrix: 
@@ -43,17 +44,10 @@ jobs:
         with:
           path: artifacts/tests/output
 
+      - name: List downloaded files
+        run: |
+          find artifacts
 
-      - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action/linux@v2
-        if: ${{ success() || failure() }}
-        with:
-          files: ${{ env.TEST_RESULTS }}/**/*.trx
-          large_files: true
-          check_name: "Test results"
-          report_individual_runs: true
-          action_fail: true
-          time_unit: milliseconds
-          compare_to_earlier_commit: false
+     
   
     
