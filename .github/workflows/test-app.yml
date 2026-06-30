@@ -1,4 +1,4 @@
-name: test and build workflow
+name: test workflow
 
 on:
   push: 
@@ -17,17 +17,13 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Test
-        run: dotnet test ./LearningGithubActions.slnx --filter Shard=${{ matrix.shards }}
+        run: dotnet test ./LearningGithubActions.slnx --filter Shard=${{ matrix.shards }}  -c Release -l trx --results-directory 'artifacts/tests/output'
 
-  build-action:
-    needs: test-action
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch Repo
-        uses: actions/checkout@v7
-      
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v4
+        if: ${{ success() || failure() }}
         with:
-          dotnet-version: '8.0.x'
+          name: test-results
+          path: artifacts/tests/output/**
+  
     
