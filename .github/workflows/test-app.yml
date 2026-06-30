@@ -30,5 +30,30 @@ jobs:
         with:
           name: test-results-${{ steps.generate-uuid.outputs.uuid }}
           path: artifacts/tests/output/**
+          
+  publish-test-results:
+    if: always()
+    needs: test
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download test artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/tests/output
+
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action/linux@v2
+        if: ${{ success() || failure() }}
+        with:
+          files: ${{ env.TEST_RESULTS }}/**/*.trx
+          large_files: true
+          check_name: "Test results"
+          report_individual_runs: true
+          action_fail: true
+          time_unit: milliseconds
+          compare_to_earlier_commit: false
   
     
