@@ -1,4 +1,4 @@
-name: test workflow
+name: test and build workflow
 
 on:
   push: 
@@ -18,4 +18,16 @@ jobs:
 
       - name: Test
         run: dotnet test ./LearningGithubActions.slnx --filter Shard=${{ matrix.shards }}
+
+  build-action:
+    needs: test-action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Repo
+        uses: actions/checkout@v7
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
     
