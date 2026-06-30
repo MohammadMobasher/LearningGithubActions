@@ -48,6 +48,20 @@ jobs:
         run: |
           find artifacts
 
-     
+      - name: List downloaded files
+        run: |
+          find artifacts     
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action/linux@v2
+        if: ${{ success() || failure() }}
+        with:
+          files: artifacts/tests/output/**/*.trx
+          large_files: true
+          check_name: "Test results"
+          report_individual_runs: true
+          action_fail: true
+          time_unit: milliseconds
+          compare_to_earlier_commit: false
   
     
