@@ -1,0 +1,19 @@
+name: build workflow
+
+on:
+  push: 
+    branches:
+      - main
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Repo
+        uses: actions/checkout@v7
+      
+      -name Setup .NET
+        uses: actions/step-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+    
