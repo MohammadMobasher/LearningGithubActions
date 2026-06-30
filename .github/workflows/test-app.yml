@@ -8,10 +8,14 @@ on:
 jobs:
   test-action:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: 
+        shards: ['1', '2']
     steps:
       - name: Fetch Repo
         uses: actions/checkout@v7
-        
+
       - name: Test
         run: dotnet test ./LearningGithubActions.slnx --filter Shard=${{ matrix.shards }}
     
