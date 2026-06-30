@@ -27,5 +27,5 @@ jobs:
           path: publish/
         
       - name: Build Docker image
-        run: docker build -t LearningGithubActions:latest .
+        run: docker build -t learninggithubactions:latest .
     
