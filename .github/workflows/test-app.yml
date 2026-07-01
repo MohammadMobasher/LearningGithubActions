@@ -20,7 +20,7 @@ jobs:
         run: echo "${{ secrets.google_token }}"
 
       - name: Print env 2
-        run: echo "${{ vars.google_token }}"                
+        run: echo "${{ vars.google_token1 }}"                
 
       - name: Fetch Repo
         uses: actions/checkout@v7
