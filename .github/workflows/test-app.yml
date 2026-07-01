@@ -14,8 +14,14 @@ jobs:
       matrix: 
         shards: ['1']
     steps:
-      - name: Print Secret
+      - name: Print Secret 1
         run: echo "${{ secrets.google_token }}"
+
+      - name: Print env 2
+        run: echo "${{ env_test.google_token }}"        
+
+      - name: Print env 2
+        run: echo "${{ vars.google_token }}"                
 
       - name: Fetch Repo
         uses: actions/checkout@v7
