@@ -17,8 +17,7 @@ jobs:
       - name: Print Secret 1
         run: echo "${{ secrets.google_token }}"
 
-      - name: Print env 2
-        run: echo "${{ env_test.google_token }}"        
+            
 
       - name: Print env 2
         run: echo "${{ vars.google_token }}"                
